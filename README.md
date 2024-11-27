@@ -10,15 +10,14 @@
 ```
 /list─app
 ├── /public
-│  └── index.php
 │  └── /css
 │      └── style.css
 │  └── /images
-│      ├── top.png
-├── /view
-│  ├── edit.php
-│  ├── new.php
-│  └── list.php
+│      └─── top.png
+│── edit.php
+│── new.php
+│── list.php
+│── index.php
 ├── .env
 ├── app.php
 └── db.php

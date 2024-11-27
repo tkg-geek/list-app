@@ -1,63 +1,49 @@
 <?php
-require_once 'db.php';  // DB接続
+require_once('db.php');
 
-$requestUri = $_SERVER['REQUEST_URI'];
+// POSTリクエストがある場合のみ処理を実行
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // フォームから送信された値を取得
+    $itemName = $_POST['itemName'] ?? '';
+    $id = $_POST['id'] ?? null;
 
-// ルーティング処理
-$requestUri = $_SERVER['REQUEST_URI'];
+    // 削除ボタンが押された場合
+    if (isset($_POST['delete']) && $id) {
+        // データベースから削除
+        $stmt = $pdo->prepare("DELETE FROM items WHERE ID = :id");
+        $stmt->execute(['id' => $id]);
 
-// ホームページ（リスト表示）
-if ($requestUri === '/' || $requestUri === '/index.php') {
-    include 'views/list.php';
-    exit;
-}
+        // list.php にリダイレクト
+        header('Location: list.php');
+        exit;
+    }
 
-// 新規作成ページ
-if ($requestUri === '/new') {
-    include 'views/new.php';
-    exit;
-}
+    // 入力が空の場合はリダイレクト
+    if (trim($itemName) === '') {
+        header('Location: new.php');
+        exit;
+    }
 
-// アイテムの作成
-if ($requestUri === '/create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $itemName = $_POST['itemName'];
+    // 更新ボタンが押された場合
+    if (isset($_POST['update']) && $id) {
+        // データベースを更新
+        $stmt = $pdo->prepare("UPDATE items SET name = :name WHERE ID = :id");
+        $stmt->execute(['name' => $itemName, 'id' => $id]);
+
+        // list.php にリダイレクト
+        header('Location: list.php');
+        exit;
+    }
+
+    // 新規作成の場合
     $stmt = $pdo->prepare("INSERT INTO items (name) VALUES (:name)");
-    $stmt->execute([':name' => $itemName]);
-    header('Location: /');
+    $stmt->execute(['name' => $itemName]);
+
+    // list.php にリダイレクト
+    header('Location: list.php');
     exit;
 }
 
-// 編集ページ
-if (preg_match('/\/edit\/(\d+)/', $requestUri, $matches)) {
-    $id = $matches[1];
-    $stmt = $pdo->prepare("SELECT * FROM items WHERE id = :id");
-    $stmt->execute([':id' => $id]);
-    $item = $stmt->fetch();
-    include 'views/edit.php';
-    exit;
-}
-
-// 更新処理
-if (preg_match('/\/update\/(\d+)/', $requestUri, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $matches[1];
-    $itemName = $_POST['itemName'];
-    $stmt = $pdo->prepare("UPDATE items SET name = :name WHERE id = :id");
-    $stmt->execute([':name' => $itemName, ':id' => $id]);
-    header('Location: /');
-    exit;
-}
-
-// 削除処理
-if (preg_match('/\/delete\/(\d+)/', $requestUri, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $matches[1];
-    $stmt = $pdo->prepare("DELETE FROM items WHERE id = :id");
-    $stmt->execute([':id' => $id]);
-    header('Location: /');
-    exit;
-}
-
-// 404 - ページが見つからない場合
-header('HTTP/1.1 404 Not Found');
-echo 'ページが見つかりません。';
+// POSTリクエストでない場合はトップページへリダイレクト
+header('Location: list.php');
 exit;
-?>

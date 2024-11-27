@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>新規作成</title>
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
 <header>
-    <a href="/" class="header-logo">LIST APP</a>
+    <a href="index.php" class="header-logo">LIST APP</a>
 </header>
 <div class="container">
     <div class="container-header">
-        <h1>買い物リスト作成</h1>
+        <h1>リスト作成</h1>
     </div>
     <div class="item-form-wrapper">
-        <form action="/create" method="post">
-            <p class="form-label">買うもの</p>
+        <form action="app.php" method="post">
+            <p class="form-label">やること</p>
             <input type="text" name="itemName">
             <input type="submit" value="作成する">
         </form>
     </div>
-    <a href="/" class="cancel-button">もどる</a>
+    <a href="list.php" class="cancel-button">もどる</a>
 </div>
 </body>
 </html>
