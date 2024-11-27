@@ -1,4 +1,4 @@
-# LIST─APP
+# LIST-APP
 ---
 ![](https://img.shields.io/badge/html-green)
 ![](https://img.shields.io/badge/css-blue)
