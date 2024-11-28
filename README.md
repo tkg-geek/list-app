@@ -21,7 +21,7 @@
 │── index.php
 ├── .env
 ├── app.php
-└── db.php
+└── db.php  
 
 ```
 
