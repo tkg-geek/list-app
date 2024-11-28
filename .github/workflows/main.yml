@@ -22,4 +22,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}     # FTPユーザー名（GitHub Secretsから取得）
           password: ${{ secrets.FTP_PASSWORD }}     # FTPパスワード（GitHub Secretsから取得）
           local-dir: ./                             # ローカルディレクトリ（GitHub Actions内のコード）
-          remote-dir: /www/list-app                # さくらサーバー上のデプロイ先ディレクトリ
+          server-dir: /www/list-app                # さくらサーバー上のデプロイ先ディレクトリ
