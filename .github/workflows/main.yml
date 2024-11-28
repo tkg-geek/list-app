@@ -16,7 +16,7 @@ jobs:
 
       # 2. FTP サーバーにデプロイ
       - name: Deploy to Sakura Server via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v5
+        uses: samkirkland/ftp-deploy-action@v4
         with:
           server: ${{ secrets.FTP_SERVER }}         # FTPサーバー名（GitHub Secretsから取得）
           username: ${{ secrets.FTP_USERNAME }}     # FTPユーザー名（GitHub Secretsから取得）
