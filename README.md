@@ -4,6 +4,7 @@
 ![](https://img.shields.io/badge/css-blue)
 ![](https://img.shields.io/badge/JavaScript-orange)
 ![](https://img.shields.io/badge/php-purple)
+![](https://img.shields.io/badge/database-red)
 
 # ディレクトリ構成
 ---
