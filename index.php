@@ -18,7 +18,6 @@
                 甘く見ていたら予想以上に苦労しました。<br>
                 なお、今回のmissionはGitです。<br>
                 mainブランチをGitHubにpushすればさくらサーバーも自動デプロイされます。<br>
-                自動デプロイテスト
             </p>
             <a class="index-button" href="list.php">一覧を見る</a>
         </div>
