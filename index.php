@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIST APP</title>
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="top-wrapper">
@@ -16,7 +17,8 @@
                 PHPに書き換えたシンプルなリストツールです。<br>
                 甘く見ていたら予想以上に苦労しました。<br>
                 なお、今回のmissionはGitです。<br>
-                mainブランチをGitHubにpushすればさくらサーバーも自動デプロイされます。
+                mainブランチをGitHubにpushすればさくらサーバーも自動デプロイされます。<br>
+                自動デプロイテスト
             </p>
             <a class="index-button" href="list.php">一覧を見る</a>
         </div>
