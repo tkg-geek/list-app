@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIST APP</title>
     <link rel="stylesheet" href="public/css/style.css">
-    <script src="public/send_url.js"></script>
 </head>
 <body>
     <div class="top-wrapper">
